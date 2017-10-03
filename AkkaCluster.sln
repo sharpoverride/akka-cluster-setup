@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AkkaSeed", "AkkaSeed\AkkaSeed.csproj", "{01391D4C-508A-462E-B56B-1D5F3009B158}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AkkaCollaborator", "AkkaCollaborator\AkkaCollaborator.csproj", "{C2628503-3380-4E17-8BC0-F9E2688ACE55}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{35BE8E08-C33A-4703-BB07-42C5F16D5A45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMessages", "SampleMessages\SampleMessages.csproj", "{63FE7FDA-A6C4-41CD-9F15-F3496BA30E92}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		DebugInContainer|Any CPU = DebugInContainer|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01391D4C-508A-462E-B56B-1D5F3009B158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01391D4C-508A-462E-B56B-1D5F3009B158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01391D4C-508A-462E-B56B-1D5F3009B158}.DebugInContainer|Any CPU.ActiveCfg = DebugInContainer|Any CPU
+		{01391D4C-508A-462E-B56B-1D5F3009B158}.DebugInContainer|Any CPU.Build.0 = DebugInContainer|Any CPU
+		{01391D4C-508A-462E-B56B-1D5F3009B158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01391D4C-508A-462E-B56B-1D5F3009B158}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2628503-3380-4E17-8BC0-F9E2688ACE55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2628503-3380-4E17-8BC0-F9E2688ACE55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2628503-3380-4E17-8BC0-F9E2688ACE55}.DebugInContainer|Any CPU.ActiveCfg = DebugInContainer|Any CPU
+		{C2628503-3380-4E17-8BC0-F9E2688ACE55}.DebugInContainer|Any CPU.Build.0 = DebugInContainer|Any CPU
+		{C2628503-3380-4E17-8BC0-F9E2688ACE55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2628503-3380-4E17-8BC0-F9E2688ACE55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35BE8E08-C33A-4703-BB07-42C5F16D5A45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35BE8E08-C33A-4703-BB07-42C5F16D5A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35BE8E08-C33A-4703-BB07-42C5F16D5A45}.DebugInContainer|Any CPU.ActiveCfg = DebugInContainer|Any CPU
+		{35BE8E08-C33A-4703-BB07-42C5F16D5A45}.DebugInContainer|Any CPU.Build.0 = DebugInContainer|Any CPU
+		{35BE8E08-C33A-4703-BB07-42C5F16D5A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35BE8E08-C33A-4703-BB07-42C5F16D5A45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63FE7FDA-A6C4-41CD-9F15-F3496BA30E92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63FE7FDA-A6C4-41CD-9F15-F3496BA30E92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63FE7FDA-A6C4-41CD-9F15-F3496BA30E92}.DebugInContainer|Any CPU.ActiveCfg = Debug|Any CPU
+		{63FE7FDA-A6C4-41CD-9F15-F3496BA30E92}.DebugInContainer|Any CPU.Build.0 = Debug|Any CPU
+		{63FE7FDA-A6C4-41CD-9F15-F3496BA30E92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63FE7FDA-A6C4-41CD-9F15-F3496BA30E92}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E2BC3AC4-7A48-444E-A9EE-709A6B47330B}
+	EndGlobalSection
+EndGlobal

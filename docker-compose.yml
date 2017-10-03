@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  akka-collaborator:
+    image: sharpoverride/akka-collaborator
+    depends_on:
+      - akka-seed
+    build:
+      context: ./AkkaCollaborator
+      dockerfile: Dockerfile
+
+  akka-seed:
+    image: sharpoverride/akka-seed
+    build:
+      context: ./AkkaSeed
+      dockerfile: Dockerfile
