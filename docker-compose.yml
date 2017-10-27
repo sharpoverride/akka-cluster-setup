@@ -3,6 +3,8 @@ version: '3'
 services:
   akka-collaborator:
     image: akkacollaborator
+    depends_on:
+      - akka-seed
     build:
       context: ./AkkaCollaborator
       dockerfile: Dockerfile

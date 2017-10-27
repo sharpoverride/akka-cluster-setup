@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 using Akka.Actor;
 using Akka.Configuration;
 
@@ -25,13 +26,7 @@ namespace AkkaCollaborator
 
         private static void KeepConsoleRunning()
         {
-#if DEBUGINCONTAINER
-            KeepAppRunningHackDuringDebugInWindowsContainer();
-#else
-            Console.WriteLine("Press ENTER to exit..");
-            Console.ReadLine();// For some reason this does not work 
-            // when visual studio is attached
-#endif
+            Thread.Sleep(Timeout.Infinite);
         }
 
         private static void KeepAppRunningHackDuringDebugInWindowsContainer()
