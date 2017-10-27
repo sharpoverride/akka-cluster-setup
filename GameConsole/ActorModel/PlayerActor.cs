@@ -5,19 +5,28 @@ using GameConsole.Messages;
 
 namespace GameConsole.ActorModel
 {
+    class PlayerActorState
+    {
+        public string PlayerName { get; set; }
+        public int Health { get; set; }
+        public override string ToString()
+        {
+            return $"[PlayerActorState {PlayerName} {Health}]";
+        }
+    }
     class PlayerActor : ReceivePersistentActor
     {
-        private readonly string _playerName;
-        private int _health;
+        private PlayerActorState _state;
+        private int _eventCount;
 
         public PlayerActor(string playerName, int startingHealth)
         {
             PersistenceId = $"player-{playerName}";
 
-            _playerName = playerName;
-            _health = startingHealth;
+            _state = new PlayerActorState{PlayerName = playerName, Health = startingHealth};
 
-            DisplayHelper.WriteLine($"{_playerName} created");
+
+            DisplayHelper.WriteLine($"{_state.PlayerName} created");
 
             Command<HitPlayer>(message => HitPlayer(message));
             Command<DisplayPlayerStatus>(message => DisplayPlayerStatus());
@@ -26,35 +35,55 @@ namespace GameConsole.ActorModel
             Recover<HitPlayer>(hit =>
             {
                 DisplayHelper.WriteLine($"{playerName} replaying HitMessage {hit} from journal");
-                _health -= hit.Damage;
+                _state.Health -= hit.Damage;
+            });
+
+            Recover<SnapshotOffer>(offer =>
+            {
+                DisplayHelper.WriteLine($"{playerName} received SnapshotOffer from snapshot");
+
+                _state = (PlayerActorState) offer.Snapshot;
+
+                DisplayHelper.WriteLine($"{_state.PlayerName} state {_state} set from snapshot.");
             });
         }
 
         private void HitPlayer(HitPlayer message)
         {
-            DisplayHelper.WriteLine($"{_playerName} received HitMessage");
-            DisplayHelper.WriteLine($"{_playerName} persisting HitMessage");
+            DisplayHelper.WriteLine($"{_state.PlayerName} received HitMessage");
+            DisplayHelper.WriteLine($"{_state.PlayerName} persisting HitMessage");
 
             Persist(message, hitMessage =>
             {
-                
-            DisplayHelper.WriteLine($"{_playerName} persisted HitMessage ok, updating actor player state");
-                _health -= message.Damage;
+
+                DisplayHelper.WriteLine($"{_state.PlayerName} persisted HitMessage ok, updating actor player state");
+                _state.Health -= message.Damage;
+
+                _eventCount++;
+
+                if (_eventCount == 5)
+                {
+                    _eventCount = 0;
+                    DisplayHelper.WriteLine($"{_state.PlayerName} save snapshot");
+                    SaveSnapshot(_state);
+                    DisplayHelper.WriteLine($"{_state.PlayerName} reset counter");
+
+                }
             });
         }
 
         private void DisplayPlayerStatus()
         {
-            DisplayHelper.WriteLine($"{_playerName} received DisplayStatusMessage");
+            DisplayHelper.WriteLine($"{_state.PlayerName} received DisplayStatusMessage");
 
-            Console.WriteLine($"{_playerName} has {_health} health");
+            Console.WriteLine($"{_state.PlayerName} has {_state.Health} health");
         }
 
         private void SimulateError()
         {
-            DisplayHelper.WriteLine($"{_playerName} received CauseErrorMessage");
+            DisplayHelper.WriteLine($"{_state.PlayerName} received CauseErrorMessage");
 
-            throw new ApplicationException($"Simulated exception in player: {_playerName}");
+            throw new ApplicationException($"Simulated exception in player: {_state.PlayerName}");
         }
 
         public override string PersistenceId { get; }

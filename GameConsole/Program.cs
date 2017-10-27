@@ -106,7 +106,7 @@ namespace GameConsole
                       plugin-dispatcher = ""akka.actor.default-dispatcher""
 
                       # connection string used for database access
-                      connection-string = ""Data Source=172.17.124.217;Initial Catalog=PSAkka;User ID=sa;Password=SecretPassword123!""
+                      connection-string = ""Data Source=(local);Initial Catalog=PSAkka;User ID=sa;Password=yourStrong(!)Password""
                       # can alternativly specify: connection-string-name
 
                       # default SQL timeout
